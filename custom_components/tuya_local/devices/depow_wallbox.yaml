@@ -1,0 +1,148 @@
+
+name: Depow 3.7kW Wallbox
+products:
+  - id: c8kwhktwaulxfb9c
+    name: Depow 3.7kW EV Charger
+
+entities:
+  # Hauptschalter der Wallbox
+  - entity: switch
+    name: Wallbox
+    dps:
+      - id: 18
+        type: boolean
+        name: switch
+
+  # Ladefreigabe: charge = ein, disabled = aus
+  - entity: switch
+    name: Ladefreigabe
+    icon: "mdi:ev-station"
+    category: config
+    dps:
+      - id: 35
+        type: string
+        name: switch
+        mapping:
+          - dps_val: charge
+            value: true
+          - dps_val: disabled
+            value: false
+
+  # Plug and Charge
+  - entity: switch
+    name: Plug and Charge
+    category: config
+    dps:
+      - id: 36
+        type: boolean
+        name: switch
+
+  # Ladestrom einstellen
+  - entity: number
+    name: Ladestromstärke
+    category: config
+    dps:
+      - id: 4
+        type: integer
+        name: value
+        unit: A
+        range:
+          min: 6
+          max: 16
+
+  # Anschlussstatus
+  - entity: sensor
+    name: Anschlussstatus
+    category: diagnostic
+    dps:
+      - id: 38
+        type: string
+        name: sensor
+
+  # Steuerungsmodus
+  - entity: sensor
+    name: Steuerungsmodus
+    category: diagnostic
+    dps:
+      - id: 13
+        type: string
+        name: sensor
+
+  # Temperatur
+  - entity: sensor
+    name: Temperatur
+    class: temperature
+    category: diagnostic
+    dps:
+      - id: 24
+        type: integer
+        name: sensor
+        unit: "°C"
+
+  # Status DP 10
+  - entity: sensor
+    name: Status DP 10
+    category: diagnostic
+    dps:
+      - id: 10
+        type: integer
+        name: sensor
+
+  # Softwareversion
+  - entity: sensor
+    name: Softwareversion
+    category: diagnostic
+    dps:
+      - id: 23
+        type: string
+        name: sensor
+
+  # Spannung: Rohwert 2335 = 233,5 V
+  - entity: sensor
+    name: Spannung
+    class: voltage
+    category: diagnostic
+    dps:
+      - id: 50
+        type: integer
+        name: sensor
+        unit: V
+        class: measurement
+        mapping:
+          - scale: 10
+
+  # Status DP 42
+  - entity: binary_sensor
+    name: Status DP 42
+    category: diagnostic
+    dps:
+      - id: 42
+        type: boolean
+        name: sensor
+
+  # Status DP 48
+  - entity: sensor
+    name: Status DP 48
+    category: diagnostic
+    dps:
+      - id: 48
+        type: integer
+        name: sensor
+
+  # Status DP 49
+  - entity: sensor
+    name: Status DP 49
+    category: diagnostic
+    dps:
+      - id: 49
+        type: integer
+        name: sensor
+
+  # Zeitstempel
+  - entity: sensor
+    name: Letzter Zeitstempel
+    category: diagnostic
+    dps:
+      - id: 54
+        type: string
+        name: sensor
